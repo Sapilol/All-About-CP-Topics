@@ -4,8 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All About CP Topics</title>
-    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: white;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #bgVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .glowing-text {
+            font-size: 2.5em;
+            color: white;
+            text-shadow: 0 0 10px #ffffff, 0 0 20px #ffffff;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            cursor: pointer;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        #data-structures-list {
+            background: rgba(173, 216, 230, 0.8); /* Light blue with transparency */
+            border-radius: 8px;
+            padding: 10px;
+            color: black;
+        }
+
+        #algorithms-list {
+            background: rgba(144, 238, 144, 0.8); /* Light green with transparency */
+            border-radius: 8px;
+            padding: 10px;
+            color: black;
+        }
+
+        .topic-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+
+        .topic-list li {
+            font-size: 1.2em; /* Increased font size */
+            margin-bottom: 10px;
+        }
+
+        .topic-list li a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+        }
+
+        .topic-list li a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <div class="background-container">
@@ -14,37 +98,51 @@
         </video>
     </div>
 
-    <div class="user-profile">
-        <a href="https://leetcode.com/Sapilol" target="_blank" class="profile-link">
-            <img src="profilepic.webp" alt="Profile" class="profile-image">
-            <span class="username">Sapilol</span>
-        </a>
-    </div>
-
     <div class="content">
         <header>
             <h1 class="glowing-text">All About CP Topics</h1>
         </header>
 
-        <div class="book">
-            <div id="pages" class="pages">
-                <!-- Solutions will be dynamically added here -->
-            </div>
+        <!-- Data Structures Section -->
+        <div class="section">
+            <h2 class="section-title" style="background-color: rgba(173, 216, 230, 0.8);" onclick="toggleList('data-structures-list')">
+                Data Structures
+            </h2>
+            <ul class="topic-list" id="data-structures-list" style="display: none;">
+                <li><a href="https://leetcode.com/problems/k-th-largest-perfect-subtree-size-in-binary-tree/solutions/6100802/all-about-perfect-binary-trees-approach-using-dfs/" target="_blank">Perfect Binary Tree 1 and 2</a></li>
+                <li><a href="https://leetcode.com/problems/word-break/solutions/6087407/all-about-tries-from-basics-step-by-step-solution/" target="_blank">Prefix Tree: Word Break</a></li>
+                <li><a href="https://leetcode.com/problems/implement-trie-prefix-tree/solutions/6092628/all-about-prefix-trees-tries-from-basics/" target="_blank">Prefix Tree: Implement Trie</a></li>
+                <li><a href="https://leetcode.com/problems/convert-sorted-array-to-binary-search-tree/solutions/6074138/all-about-avl-trees/" target="_blank">AVL Trees</a></li>
+            </ul>
         </div>
 
-        <div class="solutions-grid">
-            <div class="solution-card" data-url="https://leetcode.com/problems/two-sum">
-                <h3>Data Structures</h3>
-                <p>All About various Data Structures used in Competitive Programming</p>
-            </div>
-            <div class="solution-card" data-url="https://leetcode.com/problems/add-two-numbers">
-                <h3>Algorithms</h3>
-                <p>All About the various algorithms that we come across while programming</p>
-            </div>
-            <!-- Add more solution cards as needed -->
+        <!-- Algorithms Section -->
+        <div class="section">
+            <h2 class="section-title" style="background-color: rgba(144, 238, 144, 0.8);" onclick="toggleList('algorithms-list')">
+                Algorithms
+            </h2>
+            <ul class="topic-list" id="algorithms-list" style="display: none;">
+                <li><a href="https://leetcode.com/problems/maximum-subarray/solutions/6148473/all-about-kadanes-algorithm-by-sapilol-wzdx/" target="_blank">Kadane's Algorithm</a></li>
+                <li><a href="https://leetcode.com/problems/majority-element/solutions/6148511/all-about-booyer-moore-majority-voting-a-d3sr/" target="_blank">Booyer-Moore Majority Voting Algorithm</a></li>
+                <li><a href="https://leetcode.com/problems/repeated-string-match/" target="_blank">Z Algorithm</a></li>
+                <li><a href="https://leetcode.com/problems/linked-list-cycle-ii/solutions/6104657/all-about-tortoise-and-hare-algorithm/" target="_blank">Tortoise and Hare Algorithm: Linked List Cycle</a></li>
+                <li><a href="https://leetcode.com/problems/middle-of-the-linked-list/solutions/6104579/all-about-tortoise-and-hare-algorithm/" target="_blank">Tortoise and Hare Algorithm: Middle of Linked List</a></li>
+                <li><a href="https://leetcode.com/problems/partition-to-k-equal-sum-subsets/solutions/6129953/all-about-dp-bitmasking/" target="_blank">DP Bitmasking</a></li>
+                <li><a href="https://leetcode.com/problems/closest-prime-numbers-in-range/solutions/6092610/all-about-sieve-of-eratosthenes/" target="_blank">Sieve of Eratosthenes</a></li>
+            </ul>
         </div>
     </div>
 
-    <script src="./script.js"></script>
+    <script>
+        // Function to toggle the display of topic lists
+        function toggleList(listId) {
+            const list = document.getElementById(listId);
+            if (list.style.display === 'none') {
+                list.style.display = 'block';
+            } else {
+                list.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
