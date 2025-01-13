@@ -6,12 +6,15 @@
     <title>All About CP Topics</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        .intro-text {
+            font-size: 20px;
+        }
         body {
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #000; /* Black background */
-            color: #fff; /* White text color for contrast */
+            color: #fff; /* White text color */
             height: 100%;
             overflow-x: hidden;
         }
@@ -19,7 +22,7 @@
         .content {
             padding: 20px;
             width: 100%;
-            max-width: 100%; /* Ensure the content box spans the entire screen */
+            max-width: 100%;
             background-color: #222; /* Darker content background */
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -33,24 +36,14 @@
 
         .title {
             font-size: 3em;
-            color: #00bcd4; /* Cool gradient color */
+            color: #00bcd4;
             font-weight: 600;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 188, 212, 0.7); /* 3D text shadow */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 188, 212, 0.7);
             transition: transform 0.3s;
         }
 
         .title:hover {
-            transform: scale(1.1); /* Slight scaling on hover */
-        }
-
-        .intro-text {
-            font-size: 1.2em;
-            color: #ddd;
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #333; /* Slightly darker background for the intro */
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transform: scale(1.1);
         }
 
         .section {
@@ -62,7 +55,7 @@
             cursor: pointer;
             margin-bottom: 10px;
             padding: 15px;
-            background-color: #333; /* Dark background for section title */
+            background-color: #333;
             border: 1px solid #444;
             border-radius: 8px;
             color: #fff;
@@ -75,16 +68,23 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .topic-list {
+        .topic-list,
+        .nested-list {
             list-style-type: none;
             padding: 0;
             margin: 10px 0;
+            display: none; /* Initially hidden */
         }
 
-        .topic-list li {
+        .nested-list {
+            padding-left: 20px;
+        }
+
+        .topic-list li,
+        .nested-list li {
             font-size: 1.2em;
             margin-bottom: 15px;
-            background-color: #333; /* Dark background for list items */
+            background-color: #333;
             padding: 10px 15px;
             border: 1px solid #444;
             border-radius: 6px;
@@ -92,36 +92,20 @@
             transition: background-color 0.2s, transform 0.2s;
         }
 
-        .topic-list li:hover {
-            background-color: #444; /* Slightly lighter dark background for hover */
+        .topic-list li:hover,
+        .nested-list li:hover {
+            background-color: #444;
             transform: translateY(-2px);
         }
 
-        .topic-list li a {
+        .topic-list li a,
+        .nested-list li a {
             text-decoration: none;
             color: #0073e6;
             font-weight: 500;
         }
 
-        .topic-list li a:hover {
-            text-decoration: underline;
-        }
-
-        .nested-list {
-            list-style-type: none;
-            padding-left: 20px;
-            display: none;
-        }
-
-        .nested-list li {
-            margin-bottom: 10px;
-        }
-
-        .nested-list li a {
-            font-size: 1em;
-            color: #0099cc;
-        }
-
+        .topic-list li a:hover,
         .nested-list li a:hover {
             text-decoration: underline;
         }
@@ -131,7 +115,7 @@
             margin-top: 40px;
             color: #aaa;
             font-size: 0.9em;
-            background-color: #111; /* Dark footer background */
+            background-color: #111;
             padding: 20px 0;
         }
 
@@ -143,51 +127,6 @@
         footer a:hover {
             text-decoration: underline;
         }
-
-        .in-progress {
-            font-size: 1em;
-            color: #ff5722;
-            margin-top: 20px;
-            font-weight: bold;
-        }
-
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            background-color: #00bcd4;
-            color: #fff;
-            border: none;
-            padding: 15px;
-            border-radius: 50%;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-to-top:hover {
-            background-color: #00796b;
-        }
-
-        /* Responsive design */
-        @media screen and (max-width: 768px) {
-            .title {
-                font-size: 2em;
-            }
-
-            .section-title {
-                font-size: 1.5em;
-            }
-
-            .topic-list li {
-                font-size: 1.1em;
-            }
-
-            .intro-text {
-                font-size: 1em; /* Adjust intro text font size for smaller screens */
-            }
-        }
     </style>
 </head>
 <body>
@@ -195,7 +134,6 @@
         <header>
             <h1 class="title">All About CP Topics</h1>
         </header>
-
         <!-- Introductory Text -->
         <div class="intro-text">
             Using this website, you can learn Data Structures and Algorithms topics from the basics using LeetCode solutions. Get hands-on experience and further practice questions to exercise your learning!
@@ -206,7 +144,7 @@
             <h2 class="section-title" onclick="toggleList('data-structures-list')">
                 Data Structures
             </h2>
-            <ul class="topic-list" id="data-structures-list" style="display: none;">
+            <ul class="topic-list" id="data-structures-list">
                 <li>
                     <span onclick="toggleList('prefix-tree-subtopics')" style="cursor: pointer;">Prefix Tree</span>
                     <ul class="nested-list" id="prefix-tree-subtopics">
@@ -225,7 +163,7 @@
             <h2 class="section-title" onclick="toggleList('algorithms-list')">
                 Algorithms
             </h2>
-            <ul class="topic-list" id="algorithms-list" style="display: none;">
+            <ul class="topic-list" id="algorithms-list">
                 <li><a href="https://leetcode.com/problems/maximum-subarray/solutions/6148473/all-about-kadanes-algorithm-by-sapilol-wzdx/" target="_blank">Kadane's Algorithm</a></li>
                 <li><a href="https://leetcode.com/problems/majority-element/solutions/6148511/all-about-booyer-moore-majority-voting-a-d3sr/" target="_blank">Booyer-Moore Majority Voting Algorithm</a></li>
                 <li>
@@ -246,24 +184,19 @@
 
     <!-- Footer -->
     <footer>
-        &copy; 2024 All About CP Topics. <br>
-        <a href="https://github.com/Sapihahaha" target="_blank">GitHub</a> | 
-        <a href="https://twitter.com/CatCheforces" target="_blank">Twitter</a> | 
-        <a href="https://leetcode.com/u/Sapilol/" target="_blank">LeetCode</a>
-        <div class="in-progress">Website in progress!</div>
+        My GitHub: <a href="https://github.com/Sapilol" target="_blank">GitHub</a> |
+        My Twitter: <a href="https://twitter.com/CatCheforces" target="_blank">Twitter</a> |
+        My LeetCode: <a href="https://leetcode.com/Sapilol" target="_blank">LeetCode</a>
     </footer>
 
-    <!-- Back to top button -->
-    <button class="back-to-top" onclick="scrollToTop()">↑</button>
-
     <script>
-        function toggleList(listId) {
-            const list = document.getElementById(listId);
-            list.style.display = list.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        function toggleList(id) {
+            const list = document.getElementById(id);
+            if (list.style.display === "none" || list.style.display === "") {
+                list.style.display = "block";
+            } else {
+                list.style.display = "none";
+            }
         }
     </script>
 </body>
